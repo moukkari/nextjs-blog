@@ -10,12 +10,12 @@ interface Layout {
   home?: boolean;
 }
 
-const name = 'Ilmari Tyrkkö';
+const name = 'Mun blogi';
 export const siteTitle = 'Next.js Sample Website';
 
 export default function Layout({ children, home = false }: Layout) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -31,9 +31,10 @@ export default function Layout({ children, home = false }: Layout) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className={`${styles.header} border-b pb-12 container`}>
         {home ? (
           <>
+            <h1 className={utilStyles.heading2Xl}>{name}</h1>
             <Image
               priority
               src="/kuva.jpg"
@@ -42,10 +43,14 @@ export default function Layout({ children, home = false }: Layout) {
               width={144}
               alt=""
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
           <>
+            <h2 className={utilStyles.headingLg}>
+              <Link href="/">
+                <a className={utilStyles.colorInherit}>{name}</a>
+              </Link>
+            </h2>
             <Link href="/">
               <a>
                 <Image
@@ -58,15 +63,11 @@ export default function Layout({ children, home = false }: Layout) {
                 />
               </a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
           </>
         )}
+        <p className="pt-4">Olenhan minä datanomi.</p>
       </header>
-      <main>{children}</main>
+      <main className="pt-8">{children}</main>
       {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
