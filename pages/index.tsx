@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import {  GetStaticPropsContext } from 'next';
-import Link from 'next/link';
-import Date from '../components/date';
+import Footer from '../components/footer';
+import Posts from '../components/posts';
 
 export async function getStaticProps(props: GetStaticPropsContext) {
   const allPostsData = getSortedPostsData();
@@ -22,26 +21,9 @@ export default function Home({ allPostsData }) {
         <Head>
           <title>{siteTitle}</title>
         </Head>
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px} container px-2`}>
-          <h2 className={utilStyles.headingLg}>Blog</h2>
-          <ul className={`${utilStyles.list} flex flex-wrap md:flex-row gap-[5%]`}>
-            {allPostsData.map(({ id, date, title, imgSrc }) => (
-              <li className={`${utilStyles.listItem} border border-gray-300 rounded-lg w-full sm:w-[47.5%] md:w-[30%] overflow-hidden shadow-xl flex flex-col`} key={id}>
-                <img src={imgSrc} alt={id} className="aspect-[13.25/9.1] w-full" />
-                <div className="p-3 grow flex flex-col">
-                  <Link href={`/posts/${id}`}>
-                    <a className="grow text-[16px] font-bold text-black">{title}</a>
-                  </Link>
-                  
-                  <small className={`${utilStyles.lightText} text-right pt-4 text-[14px]`}>
-                    <Date dateString={date} />
-                  </small>
-                </div>
-                
-              </li>
-            ))}
-          </ul>
-        </section>
+
+       <Posts allPostsData={allPostsData} />
+
         <section className="bg-[#2D2A38] py-8 mt-8">
           <div className="text-white text-center container flex flex-col gap-8 px-2">
             <h1 className="mx-auto text-[2rem] md:text-[3rem] font-bold">
@@ -65,26 +47,7 @@ export default function Home({ allPostsData }) {
           </div>
         </section>
 
-        <section className="bg-[#2D2A38] py-16">
-          <div className="container flex flex-col md:flex-row">
-              <div className="px-[12.5%] text-white flex flex-col gap-8 md:w-1/2">
-                <img src="/img/image5.png" alt="ikius" className="w-1/4 md:w-1/2" />
-                <p>Ikius recruitment task</p>
-              </div>
-              <div className="px-[12.5%] text-white flex flex-col gap-8 md:w-1/2">
-                <h2>Blog posts</h2>
-                <ul>
-                  {allPostsData.map(({ id, title }) => (
-                    <Link href={`/posts/${id}`} key={id}>
-                      <a className="text-white underline hover:text-blue-500">
-                        <li className="text-xs">{title}</li>
-                      </a>
-                    </Link>
-                  ))}
-                </ul>
-              </div>
-          </div>
-        </section>
+       <Footer allPostsData={allPostsData} />
         
       </Layout>
     </>

@@ -15,3 +15,17 @@ a {
 .tilted {
   background: linear-gradient(to bottom left, #fff calc(50% - 1px), transparent 50%);
 }
+
+.article-content p + p {
+  @apply mt-4;
+}
+.article-content ul {
+  @apply my-4;
+}
+.article-content ul li {
+  @apply list-disc list-inside
+}
+
+.article-content {
+  @apply pb-8 mb-8 border-b;
+}

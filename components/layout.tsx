@@ -4,6 +4,7 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import BackToHome from './backToHome';
 
 interface Layout {
   children: ReactNode;
@@ -69,11 +70,7 @@ export default function Layout({ children, home = false }: Layout) {
       </header>
       <main className="pt-8">{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
+        <BackToHome />
       )}
     </div>
   );
