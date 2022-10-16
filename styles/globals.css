@@ -29,3 +29,11 @@ a {
 .article-content {
   @apply pb-8 mb-8 border-b;
 }
+
+.article-content p + p:not(:first-of-type) {
+  @apply pt-4;
+}
+
+.article-content h2 {
+  @apply pt-4 pb-2 text-xl font-bold;
+}
