@@ -22,6 +22,13 @@ export function request({
   if (excludeInvalid) {
     headers["X-Exclude-Invalid"] = "true";
   }
-  const client = new GraphQLClient("https://graphql.datocms.com", { headers });
-  return client.request(query, variables);
+  try {
+    const client = new GraphQLClient("https://graphql.datocms.com", {
+      headers,
+    });
+    return client.request(query, variables);
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 }
