@@ -7,5 +7,5 @@ export default function BackToHome() {
         <a className="text-black">← Back to home</a>
       </Link>
     </div>
-  )
+  );
 }

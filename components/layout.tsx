@@ -1,18 +1,18 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/layout.module.css';
-import utilStyles from '../styles/utils.module.css';
-import Link from 'next/link';
-import { ReactNode } from 'react';
-import BackToHome from './backToHome';
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/layout.module.css";
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+import { ReactNode } from "react";
+import BackToHome from "./backToHome";
 
 interface Layout {
   children: ReactNode;
   home?: boolean;
 }
 
-const name = 'Mun blogi';
-export const siteTitle = 'Next.js Sample Website';
+const name = "Mun blogi";
+export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home = false }: Layout) {
   return (
@@ -26,7 +26,7 @@ export default function Layout({ children, home = false }: Layout) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle,
+            siteTitle
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
         <meta name="og:title" content={siteTitle} />
@@ -69,9 +69,7 @@ export default function Layout({ children, home = false }: Layout) {
         <p className="pt-4">Olenhan minä datanomi.</p>
       </header>
       <main className="pt-8">{children}</main>
-      {!home && (
-        <BackToHome />
-      )}
+      {!home && <BackToHome />}
     </div>
   );
 }

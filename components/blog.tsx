@@ -1,7 +1,7 @@
-import Date from './date';
-import BackToHome from './backToHome';
+import Date from "./date";
+import BackToHome from "./backToHome";
 import { StructuredText } from "react-datocms";
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from "../styles/utils.module.css";
 
 export default function Blog({ post }: { post: Blog }) {
   const { title, date, name, image, coverImage, body } = post;
@@ -12,7 +12,11 @@ export default function Blog({ post }: { post: Blog }) {
       <section className="container p-2 flex flex-col gap-2">
         <div className="flex justify-between items-center">
           <div className="flex gap-4 items-center">
-            <img src={authorImg || "/img/Ellipse2.png"} alt="author image" className="rounded-full h-8 w-8" /> 
+            <img
+              src={authorImg || "/img/Ellipse2.png"}
+              alt="author image"
+              className="rounded-full h-8 w-8"
+            />
             {name}
           </div>
           <Date dateString={date} />
@@ -26,5 +30,5 @@ export default function Blog({ post }: { post: Blog }) {
         <StructuredText data={body} />
       </article>
     </>
-  )
+  );
 }

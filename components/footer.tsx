@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer({ allPostsData }) {
   return (
     <footer className="bg-[#2D2A38] py-16">
-    <div className="container flex flex-col md:flex-row">
+      <div className="container flex flex-col md:flex-row">
         <div className="px-[12.5%] text-white flex flex-col gap-8 md:w-1/2">
           <img src="/img/image5.png" alt="ikius" className="w-1/4 md:w-1/2" />
           <p>Ikius recruitment task</p>
@@ -20,7 +20,7 @@ export default function Footer({ allPostsData }) {
             ))}
           </ul>
         </div>
-    </div>
-  </footer>
-  )
+      </div>
+    </footer>
+  );
 }

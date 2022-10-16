@@ -34,7 +34,13 @@ export default function Home({ allPostsData, siteMetaData }: Home) {
   return (
     <>
       <Layout home>
-        <Head>{renderMetaTags(siteMetaData.faviconMetaTags)}</Head>
+        <Head>
+          <title>
+            {siteMetaData.globalSeo.siteName}
+            {siteMetaData.globalSeo.titleSuffix}
+          </title>
+          {renderMetaTags(siteMetaData.faviconMetaTags)}
+        </Head>
 
         <Posts allPostsData={allPostsData} />
 
